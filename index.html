@@ -6,61 +6,62 @@
 <title>月末全厂安全隐患排查记录单</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;background:#f3f4f6;color:#111827;font-size:14px;-webkit-font-smoothing:antialiased;padding-bottom:80px}
-.navbar{background:linear-gradient(135deg,#c2410c 0%,#ea580c 50%,#f59e0b 100%);color:#fff;padding:14px 16px 12px;position:sticky;top:0;z-index:10;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.navbar h1{font-size:16px;font-weight:600;letter-spacing:.5px}
-.navbar .subtitle{font-size:11px;opacity:.85;margin-top:3px}
-.progress-tip{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.92)}
+html{font-size:13px}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;background:#f3f4f6;color:#111827;font-size:13px;-webkit-font-smoothing:antialiased;padding-bottom:60px}
+.navbar{background:linear-gradient(135deg,#c2410c 0%,#ea580c 50%,#f59e0b 100%);color:#fff;padding:10px 14px 8px;position:sticky;top:0;z-index:10;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.navbar h1{font-size:14px;font-weight:600;letter-spacing:.3px}
+.navbar .subtitle{font-size:10px;opacity:.85;margin-top:2px}
+.progress-tip{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;background:rgba(255,255,255,.08);font-size:10.5px;color:rgba(255,255,255,.92)}
 .progress-tip .ok{color:#fef3c7}
 .progress-tip .bad{color:#fecaca}
-.card{margin:10px 12px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.card-title{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fafafa;border-bottom:1px solid #f1f5f9;font-weight:600;font-size:14px}
-.card-title .left{display:flex;align-items:center;gap:8px}
-.card-title .dot{width:6px;height:6px;border-radius:50%;background:#ea580c}
-.field-row{display:flex;align-items:center;padding:11px 14px;border-bottom:1px solid #f3f4f6}
+.card{margin:8px 10px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.card-title{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#fafafa;border-bottom:1px solid #f1f5f9;font-weight:600;font-size:12.5px}
+.card-title .left{display:flex;align-items:center;gap:6px}
+.card-title .dot{width:5px;height:5px;border-radius:50%;background:#ea580c}
+.field-row{display:flex;align-items:center;padding:8px 12px;border-bottom:1px solid #f3f4f6}
 .field-row:last-child{border-bottom:none}
-.field-row .label{width:90px;color:#6b7280;font-size:13px;flex-shrink:0}
-.field-row .value,.field-row select,.field-row input{flex:1;color:#111827;font-size:14px;border:none;outline:none;background:transparent;text-align:right}
-.field-row select{appearance:none;-webkit-appearance:none;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M3 4.5l3 3 3-3' fill='none' stroke='%239ca3af' stroke-width='1.4'/></svg>") right center/12px no-repeat;padding-right:18px}
-.group{margin:10px 12px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.group-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fafafa;border-bottom:1px solid #f1f5f9;cursor:pointer}
-.group-head .left{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px}
-.group-head .idx{width:22px;height:22px;border-radius:50%;background:#ea580c;color:#fff;font-size:11px;display:inline-flex;align-items:center;justify-content:center}
-.group-head .right{display:flex;align-items:center;gap:6px;font-size:12px;color:#6b7280}
-.group-head .badge{padding:2px 8px;border-radius:12px;background:#fef3c7;color:#b45309;font-weight:500}
+.field-row .label{width:72px;color:#6b7280;font-size:12px;flex-shrink:0}
+.field-row .value,.field-row select,.field-row input{flex:1;color:#111827;font-size:12.5px;border:none;outline:none;background:transparent;text-align:right}
+.field-row select{appearance:none;-webkit-appearance:none;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M3 4.5l3 3 3-3' fill='none' stroke='%239ca3af' stroke-width='1.4'/></svg>") right center/10px no-repeat;padding-right:14px}
+.group{margin:8px 10px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.group-head{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#fafafa;border-bottom:1px solid #f1f5f9;cursor:pointer}
+.group-head .left{display:flex;align-items:center;gap:6px;font-weight:600;font-size:12.5px}
+.group-head .idx{width:18px;height:18px;border-radius:50%;background:#ea580c;color:#fff;font-size:10px;display:inline-flex;align-items:center;justify-content:center}
+.group-head .right{display:flex;align-items:center;gap:5px;font-size:11px;color:#6b7280}
+.group-head .badge{padding:1px 6px;border-radius:10px;background:#fef3c7;color:#b45309;font-weight:500}
 .group-head .badge.ok{background:#fed7aa;color:#9a3412}
-.group-head .chev{transition:transform .3s}
+.group-head .chev{transition:transform .3s;font-size:10px}
 .group.open .group-head .chev{transform:rotate(180deg)}
-.group-body{display:none;padding:6px 0}
+.group-body{display:none;padding:4px 0}
 .group.open .group-body{display:block}
-.item{padding:10px 14px;border-bottom:1px solid #f3f4f6}
+.item{padding:7px 12px;border-bottom:1px solid #f3f4f6}
 .item:last-child{border-bottom:none}
-.item .title{display:flex;align-items:flex-start;gap:6px;font-size:13.5px;font-weight:500;color:#111827;line-height:1.5;margin-bottom:4px}
-.item .num{color:#9ca3af;font-size:12px;flex-shrink:0;margin-top:1px}
-.item .std{font-size:11.5px;color:#9ca3af;margin-bottom:8px;line-height:1.5;padding-left:18px}
-.btns{display:flex;gap:8px;padding-left:18px}
-.btn{flex:1;height:34px;border:1px solid #e5e7eb;border-radius:6px;background:#fff;font-size:13px;color:#6b7280;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
+.item .title{display:flex;align-items:flex-start;gap:5px;font-size:12.5px;font-weight:500;color:#111827;line-height:1.45;margin-bottom:3px}
+.item .num{color:#9ca3af;font-size:11px;flex-shrink:0;margin-top:1px;min-width:14px}
+.item .std{font-size:10.5px;color:#9ca3af;margin-bottom:6px;line-height:1.45;padding-left:19px}
+.btns{display:flex;gap:6px;padding-left:19px}
+.btn{flex:1;height:28px;border:1px solid #e5e7eb;border-radius:5px;background:#fff;font-size:12px;color:#6b7280;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px}
 .btn.ok.sel{background:#dcfce7;border-color:#16a34a;color:#15803d}
 .btn.bad.sel{background:#fee2e2;border-color:#dc2626;color:#b91c1c}
-.abnormal{margin-top:8px;margin-left:18px;padding:8px 10px;background:#fef2f2;border:1px solid #fecaca;border-radius:6px;display:none}
+.abnormal{margin-top:6px;margin-left:19px;padding:7px 8px;background:#fef2f2;border:1px solid #fecaca;border-radius:5px;display:none}
 .abnormal.show{display:block}
-.abnormal label{display:block;font-size:11.5px;color:#9a3412;margin-bottom:4px;margin-top:6px}
+.abnormal label{display:block;font-size:10.5px;color:#9a3412;margin-bottom:3px;margin-top:5px}
 .abnormal label:first-child{margin-top:0}
-.abnormal textarea{width:100%;min-height:50px;padding:7px 9px;border:1px solid #fecaca;border-radius:6px;font-size:13px;color:#111827;outline:none;resize:none;background:#fff;font-family:inherit}
-.summary textarea{width:100%;min-height:60px;padding:9px;border:1px solid #e5e7eb;border-radius:6px;font-size:13.5px;color:#111827;outline:none;resize:none;background:#fff;font-family:inherit;margin:8px 14px;width:calc(100% - 28px)}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:10px 14px;border-top:1px solid #e5e7eb;display:flex;gap:10px;align-items:center;z-index:9}
-.bottom .stat{font-size:11px;color:#6b7280;flex:1}
+.abnormal textarea{width:100%;min-height:40px;padding:5px 7px;border:1px solid #fecaca;border-radius:5px;font-size:12px;color:#111827;outline:none;resize:none;background:#fff;font-family:inherit}
+.summary textarea{min-height:50px;padding:7px;border:1px solid #e5e7eb;border-radius:5px;font-size:12.5px;color:#111827;outline:none;resize:none;background:#fff;font-family:inherit;margin:6px 12px;width:calc(100% - 24px);box-sizing:border-box}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:8px 12px;border-top:1px solid #e5e7eb;display:flex;gap:8px;align-items:center;z-index:9}
+.bottom .stat{font-size:10.5px;color:#6b7280;flex:1}
 .bottom .stat span{font-weight:600;color:#ea580c}
-.submit-btn{flex:0 0 auto;height:42px;padding:0 28px;background:linear-gradient(135deg,#c2410c,#ea580c);color:#fff;border:none;border-radius:21px;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 2px 6px rgba(234,88,12,.3)}
+.submit-btn{flex:0 0 auto;height:36px;padding:0 22px;background:linear-gradient(135deg,#c2410c,#ea580c);color:#fff;border:none;border-radius:18px;font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:0 2px 5px rgba(234,88,12,.3)}
 .submit-btn:disabled{background:#d1d5db;box-shadow:none}
-.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:11px 18px;background:rgba(0,0,0,.82);color:#fff;font-size:13.5px;border-radius:8px;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:9px 16px;background:rgba(0,0,0,.82);color:#fff;font-size:12.5px;border-radius:7px;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none}
 .toast.show{opacity:1}
 .mask{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:50}
 .mask.show{display:flex}
-.mask .box{width:80%;max-width:300px;background:#fff;border-radius:12px;padding:18px;text-align:center}
-.mask .box h3{font-size:15px;margin-bottom:8px}
-.mask .box p{font-size:13px;color:#6b7280;margin-bottom:14px;line-height:1.5}
-.mask .box button{height:38px;width:100%;background:#ea580c;color:#fff;border:none;border-radius:6px;font-size:14px;font-weight:600}
+.mask .box{width:80%;max-width:280px;background:#fff;border-radius:10px;padding:16px;text-align:center}
+.mask .box h3{font-size:14px;margin-bottom:6px}
+.mask .box p{font-size:12px;color:#6b7280;margin-bottom:12px;line-height:1.5}
+.mask .box button{height:34px;width:100%;background:#ea580c;color:#fff;border:none;border-radius:5px;font-size:13px;font-weight:600}
 </style>
 </head>
 <body>
@@ -112,8 +113,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 </div>
 
 <script>
-// 严格按 xlsx《月末全厂安全隐患排查记录单》原内容（新版）拆分
-// 9 大类，每类的检查项与备注（合格标准）一一对应
+// 严格按 xlsx《月末全厂安全隐患排查记录单》原内容，10 大类
+// 第 4 类「中频炉系统」的「炉体」拆成 8 个独立小项（老王 2026-05-26 要求）
 const DATA = [
   {cat:"热水槽", items:[
     {content:"水压", std:"≥0.1MPA"},
@@ -133,15 +134,22 @@ const DATA = [
   ]},
   {cat:"中频炉系统", items:[
     {content:"中频电柜", std:"异味，异响，螺丝发红，循环水管是否异常"},
-    {content:"炉体", std:"中频炉胶木柱是否完整、是否开裂，胶木柱固定螺栓是否牢固、有松动；中频炉炉体周边是否存在积水或其他易燃易爆物品；检查感应圈胶泥是否剥落、是否露出打结料；检查 1#、2# 冷却塔温度、压力、流量监测报警是否正常；检查磁轭顶块顶杆是否齐全、是否松动"},
+    {content:"炉体-石棉垫、绝缘柱等", std:""},
+    {content:"炉体-周边潮湿/积水/易燃易爆物品", std:"中频炉炉体周边是否存在潮湿、积水或其他易燃易爆物品"},
+    {content:"炉体-下方排水沟积水", std:"中频炉炉体下方排水沟内是否存在积水"},
+    {content:"炉体-胶木柱与螺栓", std:"中频炉胶木柱是否开裂、螺栓和螺母设置是否齐全"},
+    {content:"炉体-感应圈胶泥", std:"检查感应圈胶泥是否剥落、是否露出打结料"},
+    {content:"炉体-磁轭顶块顶杆", std:"检查磁轭顶块顶杆是否齐全、是否松动"},
+    {content:"炉体-炉衬厚度", std:"检查炉衬（不小于新炉衬厚度的35％）"},
+    {content:"炉体-1#2# 冷却塔报警", std:"检查 1#、2# 冷却塔温度、压力、流量监测报警是否正常"},
     {content:"模具情况", std:""},
     {content:"发电机情况", std:""},
     {content:"1#2# 冷却塔水压", std:"≥0.2MPA"},
     {content:"1#2# 冷却塔水位", std:"在液位计的红色标线以上"}
   ]},
   {cat:"环保设备", items:[
-    {content:"除尘器", std:"直流输出电流≥100mA；直流输出电压＞50kV；皮带、螺栓、电机、紧固件有无损坏、松动异响等异常情况"},
-    {content:"风机电箱", std:"箱内软启动显示旁路运行及电流数值（37-40A）"},
+    {content:"除尘器", std:"直流输出电流≥100mA；直流输出电压＞50kV"},
+    {content:"水处理装置", std:"电动机接口密封性、定期更换滤布等"},
     {content:"跑冒滴漏情况", std:""},
     {content:"空压机", std:"接头、阀门、排水阀等是否正常运行"},
     {content:"污染源在线监控", std:"电源、联网接口，显示器等是否正常运行"}
@@ -151,6 +159,10 @@ const DATA = [
   ]},
   {cat:"劳动防护用品", items:[
     {content:"佩戴情况", std:"安全帽，口罩，劳保鞋，手套等"}
+  ]},
+  {cat:"卫生", items:[
+    {content:"生产车间及周围卫生秩序", std:""},
+    {content:"卫生间", std:""}
   ]},
   {cat:"安全", items:[
     {content:"剪板机使用情况", std:"机身周围清洁、全系统是否漏油、开关按钮等"},
@@ -175,13 +187,13 @@ document.getElementById('curMonth').textContent = monthStr;
 document.getElementById('dateVal').textContent = todayStr;
 document.getElementById('monthVal').textContent = monthStr;
 
-// 渲染分组
+// 渲染分组（默认全部折叠，减少首屏长度）
 const groupsEl = document.getElementById('groups');
 let totalItems = 0;
 DATA.forEach((g, gi) => {
   totalItems += g.items.length;
   const items = g.items.map((it, ii) => {
-    const stdHtml = it.std ? `<div class="std">${it.std}</div>` : `<div class="std">&nbsp;</div>`;
+    const stdHtml = it.std ? `<div class="std">${it.std}</div>` : '';
     return `
       <div class="item" data-gi="${gi}" data-ii="${ii}">
         <div class="title"><span class="num">${ii+1}.</span><span>${it.content}</span></div>
@@ -199,7 +211,7 @@ DATA.forEach((g, gi) => {
       </div>`;
   }).join('');
   groupsEl.insertAdjacentHTML('beforeend', `
-    <div class="group open" data-gi="${gi}">
+    <div class="group" data-gi="${gi}">
       <div class="group-head" onclick="this.parentElement.classList.toggle('open')">
         <div class="left"><span class="idx">${gi+1}</span>${g.cat}</div>
         <div class="right"><span class="badge ok"><span class="okN">0</span>/${g.items.length}</span><span class="chev">▾</span></div>
@@ -211,7 +223,7 @@ document.getElementById('totalCnt').textContent = totalItems;
 document.getElementById('allCnt').textContent = totalItems;
 
 // 状态管理
-const state = {}; // key = gi-ii, val = {status, remark, fix}
+const state = {};
 function setStatus(gi, ii, st, btnEl){
   const key = `${gi}-${ii}`;
   state[key] = state[key] || {};
@@ -233,7 +245,6 @@ function refreshCounts(){
   document.getElementById('okCnt').textContent = ok;
   document.getElementById('badCnt').textContent = bad;
   document.getElementById('doneCnt').textContent = done;
-  // 每个 group 的 badge 进度
   DATA.forEach((g, gi) => {
     let n = 0;
     g.items.forEach((_, ii) => { if (state[`${gi}-${ii}`]?.status === 'ok') n++; });
@@ -274,7 +285,6 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
   }));
   if (unchecked > 0){ showToast(`还有 ${unchecked} 项未检查`); return; }
 
-  // 收集 items + 整改/异常摘要
   const items = [];
   const anomalies = [];
   const fixes = [];
@@ -298,7 +308,6 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
     }
   }));
 
-  // 异常但未填整改措施 → 拦截
   const badNoFix = items.filter(x => x.status === '异常' && !x.fix);
   if (badNoFix.length){
     showToast(`有 ${badNoFix.length} 项异常未填整改措施`);
@@ -307,7 +316,6 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
 
   const summary = (document.getElementById('summary').value || '').trim();
 
-  // dedup
   const fingerprint = djb2(JSON.stringify({inspector, items, summary}));
   const lastHash = localStorage.getItem(LS_HASH);
   const lastTs = parseInt(localStorage.getItem(LS_TS) || '0', 10);
