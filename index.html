@@ -6,8 +6,9 @@
 <title>月末全厂安全隐患排查记录单</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;color:#1f2937;background:#f3f4f6;-webkit-font-smoothing:antialiased}
-body{padding-bottom:80px}
+html{background:#f3f4f6}
+html,body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;color:#1f2937;-webkit-font-smoothing:antialiased}
+body{max-width:480px;margin:0 auto;background:#f3f4f6;padding-bottom:80px;min-height:100vh;position:relative;box-shadow:0 0 12px rgba(0,0,0,.04)}
 input,textarea,button,select{font-family:inherit;font-size:inherit;color:inherit;border:none;outline:none;background:transparent}
 .navbar{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#c2410c 0%,#ea580c 50%,#f59e0b 100%);color:#fff;padding:14px 16px 12px;box-shadow:0 2px 8px rgba(234,88,12,.18)}
 .navbar h1{font-size:17px;font-weight:600;letter-spacing:.5px;text-align:center}
@@ -49,7 +50,7 @@ input,textarea,button,select{font-family:inherit;font-size:inherit;color:inherit
 .abnormal label:first-child{margin-top:0}
 .abnormal textarea{width:100%;min-height:50px;padding:7px 9px;border:1px solid #fecaca;border-radius:6px;font-size:13px;color:#111827;outline:none;resize:none;background:#fff}
 .summary textarea{min-height:60px;padding:9px;border:1px solid #e5e7eb;border-radius:6px;font-size:13.5px;color:#111827;outline:none;resize:none;background:#fff;margin:8px 14px;width:calc(100% - 28px);box-sizing:border-box}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:10px 14px;border-top:1px solid #e5e7eb;display:flex;gap:10px;align-items:center;z-index:9}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;padding:10px 14px;border-top:1px solid #e5e7eb;display:flex;gap:10px;align-items:center;z-index:9}
 .bottom .stat{font-size:11px;color:#6b7280;flex:1}
 .bottom .stat span{font-weight:600;color:#ea580c}
 .submit-btn{flex:0 0 auto;height:42px;padding:0 28px;background:linear-gradient(135deg,#c2410c,#ea580c);color:#fff;border:none;border-radius:21px;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 2px 6px rgba(234,88,12,.3)}
@@ -137,7 +138,7 @@ const DATA = [
     {content:"夹套水温", std:"50-55℃"}
   ]},
   {cat:"中频炉系统", items:[
-    {content:"中频电柜", std:"异味，异响，螺丝发红，循环水管是否异常"},
+    {content:"中频电柜", std:"异味，异响，螺丝发红"},
     {content:"炉体-石棉垫、绝缘柱等", std:""},
     {content:"炉体-周边潮湿/积水/易燃易爆物品", std:"中频炉炉体周边是否存在潮湿、积水或其他易燃易爆物品"},
     {content:"炉体-下方排水沟积水", std:"中频炉炉体下方排水沟内是否存在积水"},
