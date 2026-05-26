@@ -6,69 +6,69 @@
 <title>月末全厂安全隐患排查记录单</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{font-size:13px}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;background:#f3f4f6;color:#111827;font-size:13px;-webkit-font-smoothing:antialiased;padding-bottom:60px}
-.navbar{background:linear-gradient(135deg,#c2410c 0%,#ea580c 50%,#f59e0b 100%);color:#fff;padding:10px 14px 8px;position:sticky;top:0;z-index:10;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.navbar h1{font-size:14px;font-weight:600;letter-spacing:.3px}
-.navbar .subtitle{font-size:10px;opacity:.85;margin-top:2px}
-.progress-tip{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;background:rgba(255,255,255,.08);font-size:10.5px;color:rgba(255,255,255,.92)}
+html,body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;color:#1f2937;background:#f3f4f6;-webkit-font-smoothing:antialiased}
+body{padding-bottom:80px}
+input,textarea,button,select{font-family:inherit;font-size:inherit;color:inherit;border:none;outline:none;background:transparent}
+.navbar{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#c2410c 0%,#ea580c 50%,#f59e0b 100%);color:#fff;padding:14px 16px 12px;box-shadow:0 2px 8px rgba(234,88,12,.18)}
+.navbar h1{font-size:17px;font-weight:600;letter-spacing:.5px;text-align:center}
+.navbar .sub{display:flex;justify-content:center;gap:14px;margin-top:6px;font-size:11px;opacity:.85}
+.progress-tip{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.92)}
 .progress-tip .ok{color:#fef3c7}
 .progress-tip .bad{color:#fecaca}
-.card{margin:8px 10px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
-.card-title{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#fafafa;border-bottom:1px solid #f1f5f9;font-weight:600;font-size:12.5px}
-.card-title .left{display:flex;align-items:center;gap:6px}
-.card-title .dot{width:5px;height:5px;border-radius:50%;background:#ea580c}
-.field-row{display:flex;align-items:center;padding:8px 12px;border-bottom:1px solid #f3f4f6}
+.card{margin:10px 12px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.card-title{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fafafa;border-bottom:1px solid #f1f5f9;font-weight:600;font-size:14px}
+.card-title .left{display:flex;align-items:center;gap:8px}
+.card-title .dot{width:6px;height:6px;border-radius:50%;background:#ea580c}
+.field-row{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid #f3f4f6}
 .field-row:last-child{border-bottom:none}
-.field-row .label{width:72px;color:#6b7280;font-size:12px;flex-shrink:0}
-.field-row .value,.field-row select,.field-row input{flex:1;color:#111827;font-size:12.5px;border:none;outline:none;background:transparent;text-align:right}
-.field-row select{appearance:none;-webkit-appearance:none;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M3 4.5l3 3 3-3' fill='none' stroke='%239ca3af' stroke-width='1.4'/></svg>") right center/10px no-repeat;padding-right:14px}
-.group{margin:8px 10px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
-.group-head{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#fafafa;border-bottom:1px solid #f1f5f9;cursor:pointer}
-.group-head .left{display:flex;align-items:center;gap:6px;font-weight:600;font-size:12.5px}
-.group-head .idx{width:18px;height:18px;border-radius:50%;background:#ea580c;color:#fff;font-size:10px;display:inline-flex;align-items:center;justify-content:center}
-.group-head .right{display:flex;align-items:center;gap:5px;font-size:11px;color:#6b7280}
-.group-head .badge{padding:1px 6px;border-radius:10px;background:#fef3c7;color:#b45309;font-weight:500}
-.group-head .badge.ok{background:#fed7aa;color:#9a3412}
-.group-head .chev{transition:transform .3s;font-size:10px}
+.field-row label{flex:0 0 92px;color:#6b7280;font-size:13px}
+.field-row .value,.field-row select{flex:1;padding:6px 8px;background:#f9fafb;border-radius:6px;font-size:13.5px;color:#1f2937}
+.field-row select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%236b7280' d='M0 0l5 6 5-6z'/></svg>");background-repeat:no-repeat;background-position:right 10px center;background-color:#f9fafb;padding-right:24px}
+.group{margin:10px 12px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.group-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fafafa;border-bottom:1px solid #f1f5f9;cursor:pointer}
+.group-head .left{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px}
+.group-head .idx{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:#fed7aa;color:#9a3412;font-size:11px;font-weight:700}
+.group-head .right{display:flex;align-items:center;gap:8px;color:#6b7280;font-size:12px}
+.group-head .badge{padding:2px 8px;border-radius:10px;background:#fef3c7;color:#b45309;font-weight:500}
+.group-head .chev{transition:transform .3s;font-size:11px}
 .group.open .group-head .chev{transform:rotate(180deg)}
-.group-body{display:none;padding:4px 0}
+.group-body{display:none;padding:6px 0}
 .group.open .group-body{display:block}
-.item{padding:7px 12px;border-bottom:1px solid #f3f4f6}
+.item{padding:10px 14px;border-bottom:1px solid #f3f4f6}
 .item:last-child{border-bottom:none}
-.item .title{display:flex;align-items:flex-start;gap:5px;font-size:12.5px;font-weight:500;color:#111827;line-height:1.45;margin-bottom:3px}
-.item .num{color:#9ca3af;font-size:11px;flex-shrink:0;margin-top:1px;min-width:14px}
-.item .std{font-size:10.5px;color:#9ca3af;margin-bottom:6px;line-height:1.45;padding-left:19px}
-.btns{display:flex;gap:6px;padding-left:19px}
-.btn{flex:1;height:28px;border:1px solid #e5e7eb;border-radius:5px;background:#fff;font-size:12px;color:#6b7280;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px}
+.item .title{display:flex;align-items:flex-start;gap:6px;font-size:13.5px;font-weight:500;color:#111827;line-height:1.5;margin-bottom:5px}
+.item .num{color:#9ca3af;font-size:12px;flex-shrink:0;margin-top:1px;min-width:16px}
+.item .std{font-size:11.5px;color:#9ca3af;margin-bottom:8px;line-height:1.5;padding-left:22px}
+.btns{display:flex;gap:8px;padding-left:22px}
+.btn{flex:1;height:34px;border:1px solid #e5e7eb;border-radius:6px;background:#fff;font-size:13px;color:#6b7280;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
 .btn.ok.sel{background:#dcfce7;border-color:#16a34a;color:#15803d}
 .btn.bad.sel{background:#fee2e2;border-color:#dc2626;color:#b91c1c}
-.abnormal{margin-top:6px;margin-left:19px;padding:7px 8px;background:#fef2f2;border:1px solid #fecaca;border-radius:5px;display:none}
+.abnormal{margin-top:8px;margin-left:22px;padding:8px 10px;background:#fef2f2;border:1px solid #fecaca;border-radius:6px;display:none}
 .abnormal.show{display:block}
-.abnormal label{display:block;font-size:10.5px;color:#9a3412;margin-bottom:3px;margin-top:5px}
+.abnormal label{display:block;font-size:11.5px;color:#9a3412;margin-bottom:4px;margin-top:6px}
 .abnormal label:first-child{margin-top:0}
-.abnormal textarea{width:100%;min-height:40px;padding:5px 7px;border:1px solid #fecaca;border-radius:5px;font-size:12px;color:#111827;outline:none;resize:none;background:#fff;font-family:inherit}
-.summary textarea{min-height:50px;padding:7px;border:1px solid #e5e7eb;border-radius:5px;font-size:12.5px;color:#111827;outline:none;resize:none;background:#fff;font-family:inherit;margin:6px 12px;width:calc(100% - 24px);box-sizing:border-box}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:8px 12px;border-top:1px solid #e5e7eb;display:flex;gap:8px;align-items:center;z-index:9}
-.bottom .stat{font-size:10.5px;color:#6b7280;flex:1}
+.abnormal textarea{width:100%;min-height:50px;padding:7px 9px;border:1px solid #fecaca;border-radius:6px;font-size:13px;color:#111827;outline:none;resize:none;background:#fff}
+.summary textarea{min-height:60px;padding:9px;border:1px solid #e5e7eb;border-radius:6px;font-size:13.5px;color:#111827;outline:none;resize:none;background:#fff;margin:8px 14px;width:calc(100% - 28px);box-sizing:border-box}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:10px 14px;border-top:1px solid #e5e7eb;display:flex;gap:10px;align-items:center;z-index:9}
+.bottom .stat{font-size:11px;color:#6b7280;flex:1}
 .bottom .stat span{font-weight:600;color:#ea580c}
-.submit-btn{flex:0 0 auto;height:36px;padding:0 22px;background:linear-gradient(135deg,#c2410c,#ea580c);color:#fff;border:none;border-radius:18px;font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:0 2px 5px rgba(234,88,12,.3)}
+.submit-btn{flex:0 0 auto;height:42px;padding:0 28px;background:linear-gradient(135deg,#c2410c,#ea580c);color:#fff;border:none;border-radius:21px;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 2px 6px rgba(234,88,12,.3)}
 .submit-btn:disabled{background:#d1d5db;box-shadow:none}
-.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:9px 16px;background:rgba(0,0,0,.82);color:#fff;font-size:12.5px;border-radius:7px;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:11px 18px;background:rgba(0,0,0,.82);color:#fff;font-size:13.5px;border-radius:8px;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none}
 .toast.show{opacity:1}
 .mask{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:50}
 .mask.show{display:flex}
-.mask .box{width:80%;max-width:280px;background:#fff;border-radius:10px;padding:16px;text-align:center}
-.mask .box h3{font-size:14px;margin-bottom:6px}
-.mask .box p{font-size:12px;color:#6b7280;margin-bottom:12px;line-height:1.5}
-.mask .box button{height:34px;width:100%;background:#ea580c;color:#fff;border:none;border-radius:5px;font-size:13px;font-weight:600}
+.mask .box{width:80%;max-width:300px;background:#fff;border-radius:12px;padding:18px;text-align:center}
+.mask .box h3{font-size:15px;margin-bottom:8px}
+.mask .box p{font-size:13px;color:#6b7280;margin-bottom:14px;line-height:1.5}
+.mask .box button{height:38px;width:100%;background:#ea580c;color:#fff;border:none;border-radius:6px;font-size:14px;font-weight:600}
 </style>
 </head>
 <body>
 
 <div class="navbar">
   <h1>月末全厂安全隐患排查记录单</h1>
-  <div class="subtitle">天一合金 · 月度联合排查</div>
+  <div class="sub"><span>天一合金</span><span>·</span><span>月度联合排查</span></div>
 </div>
 <div class="progress-tip">
   <div>当前 <span id="curDate"></span> · <span id="curMonth"></span></div>
@@ -77,10 +77,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 
 <div class="card">
   <div class="card-title"><div class="left"><span class="dot"></span>检查信息</div></div>
-  <div class="field-row"><div class="label">检查月份</div><div class="value" id="monthVal"></div></div>
-  <div class="field-row"><div class="label">检查日期</div><div class="value" id="dateVal"></div></div>
+  <div class="field-row"><label>检查月份</label><div class="value" id="monthVal"></div></div>
+  <div class="field-row"><label>检查日期</label><div class="value" id="dateVal"></div></div>
   <div class="field-row">
-    <div class="label">检查人</div>
+    <label>检查人</label>
     <select id="inspector">
       <option value="">请选择</option>
       <option value="张海飞">张海飞</option>
@@ -113,8 +113,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 </div>
 
 <script>
-// 严格按 xlsx《月末全厂安全隐患排查记录单》原内容，10 大类
-// 第 4 类「中频炉系统」的「炉体」拆成 8 个独立小项（老王 2026-05-26 要求）
+// 严格按 xlsx 原内容（含 2026 老王口头修订）—— 10 大类
+// 修订点：
+//  · 中频炉系统·炉体 拆 8 小项
+//  · 环保设备：除尘器只保留电气标准；风机电箱→水处理装置
+//  · 新增第 8 类「卫生」
+//  · 安全（第 9）3 项 / 环保（第 10）4 项
 const DATA = [
   {cat:"热水槽", items:[
     {content:"水压", std:"≥0.1MPA"},
@@ -165,15 +169,15 @@ const DATA = [
     {content:"卫生间", std:""}
   ]},
   {cat:"安全", items:[
-    {content:"剪板机使用情况", std:"机身周围清洁、全系统是否漏油、开关按钮等"},
-    {content:"挤压机使用情况", std:"机身周围清洁、全系统是否漏油、控制箱各电线按钮等"},
-    {content:"叉车使用情况", std:"检查整车及各零部件是否有异常"},
-    {content:"车间其他电气设备使用情况", std:""},
-    {content:"配电房常规检查", std:"有无异味、异响，功率因素表数值"}
+    {content:"剪板机使用情况", std:""},
+    {content:"压铜机使用情况", std:""},
+    {content:"电气设备使用情况", std:"配电房功率因数表数值"}
   ]},
   {cat:"环保", items:[
-    {content:"生产、包装车间卫生秩序情况", std:""},
-    {content:"危废仓库卫生及危废标签情况", std:""}
+    {content:"包装车间卫生秩序情况", std:""},
+    {content:"危废仓库卫生及危废标签情况", std:""},
+    {content:"配件仓库卫生秩序情况", std:""},
+    {content:"垃圾箱周围卫生情况", std:""}
   ]}
 ];
 
@@ -187,7 +191,7 @@ document.getElementById('curMonth').textContent = monthStr;
 document.getElementById('dateVal').textContent = todayStr;
 document.getElementById('monthVal').textContent = monthStr;
 
-// 渲染分组（默认全部折叠，减少首屏长度）
+// 渲染分组（默认全部展开）
 const groupsEl = document.getElementById('groups');
 let totalItems = 0;
 DATA.forEach((g, gi) => {
@@ -211,10 +215,10 @@ DATA.forEach((g, gi) => {
       </div>`;
   }).join('');
   groupsEl.insertAdjacentHTML('beforeend', `
-    <div class="group" data-gi="${gi}">
+    <div class="group open" data-gi="${gi}">
       <div class="group-head" onclick="this.parentElement.classList.toggle('open')">
         <div class="left"><span class="idx">${gi+1}</span>${g.cat}</div>
-        <div class="right"><span class="badge ok"><span class="okN">0</span>/${g.items.length}</span><span class="chev">▾</span></div>
+        <div class="right"><span class="badge"><span class="okN">0</span>/${g.items.length}</span><span class="chev">▾</span></div>
       </div>
       <div class="group-body">${items}</div>
     </div>`);
