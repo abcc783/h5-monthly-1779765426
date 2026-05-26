@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>月末全厂安全隐患排查记录单</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+html,body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;color:#1f2937;background:#f3f4f6;-webkit-font-smoothing:antialiased}
+input,textarea,button,select{font-family:inherit;font-size:inherit;color:inherit;border:none;outline:none;background:transparent}
+.app{max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:96px;background:#f3f4f6}
+
+.navbar{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#c2410c 0%,#ea580c 60%,#f59e0b 100%);color:#fff;padding:14px 16px 12px;box-shadow:0 2px 8px rgba(194,65,12,.22)}
+.navbar h1{font-size:16px;font-weight:600;letter-spacing:.5px;text-align:center;line-height:1.4}
+.navbar .sub{display:flex;justify-content:center;gap:14px;margin-top:6px;font-size:11px;opacity:.9}
+
+.progress-bar{height:4px;background:rgba(255,255,255,.18)}
+.progress-bar .fill{height:100%;background:#fde047;width:0%;transition:width .3s}
+.progress-tip{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.92)}
+
+.card{background:#fff;margin:10px 12px;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.card.info-card{overflow:visible}
+.card.group,.card.summary{overflow:hidden}
+.card-title{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fafafa;border-bottom:1px solid #f1f5f9;font-weight:600;font-size:14px}
+.card-title .dot{width:6px;height:6px;border-radius:50%;background:#ea580c;display:inline-block;margin-right:8px}
+
+.field-row{display:flex;align-items:center;padding:11px 14px;border-bottom:1px solid #f3f4f6}
+.field-row:last-child{border-bottom:none}
+.field-row label{flex:0 0 92px;font-size:13px;color:#6b7280}
+.field-row input,.field-row select{flex:1;padding:6px 8px;border-radius:6px;background:#f9fafb;font-size:13.5px}
+
+.group{margin:10px 12px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.group-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fafafa;border-bottom:1px solid #f1f5f9;cursor:pointer}
+.group-head .left{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px}
+.group-head .idx{width:22px;height:22px;border-radius:50%;background:#ea580c;color:#fff;font-size:11px;display:inline-flex;align-items:center;justify-content:center}
+.group-head .right{display:flex;align-items:center;gap:6px;font-size:12px;color:#6b7280}
+.group-head .badge{padding:2px 8px;border-radius:12px;background:#fef3c7;color:#b45309;font-weight:500}
+.group-head .badge.ok{background:#fed7aa;color:#9a3412}
+.group-head .chev{transition:transform .3s}
+.group.open .group-head .chev{transform:rotate(180deg)}
+.group-body{display:none;padding:6px 0}
+.group.open .group-body{display:block}
+
+.item{padding:12px 14px;border-bottom:1px solid #f3f4f6}
+.item:last-child{border-bottom:none}
+.item .title{display:flex;align-items:flex-start;gap:6px;font-size:13.5px;font-weight:500;color:#111827;line-height:1.5;margin-bottom:6px}
+.item .title .n{color:#ea580c;font-weight:600;flex-shrink:0}
+.item .std{font-size:11.5px;color:#6b7280;background:#fff7ed;padding:6px 8px;border-radius:6px;line-height:1.5;margin-bottom:8px;border-left:3px solid #f59e0b}
+.item .toggle{display:flex;gap:6px}
+.item .toggle button{flex:1;padding:8px 0;border-radius:6px;font-size:12.5px;font-weight:500;background:#f3f4f6;color:#6b7280;transition:all .2s}
+.item .toggle button.ok.active{background:#d1fae5;color:#047857}
+.item .toggle button.ng.active{background:#fee2e2;color:#b91c1c}
+
+.abnormal{display:none;margin-top:8px;padding:10px;background:#fef2f2;border-radius:6px}
+.abnormal.open{display:block}
+.abnormal .a-toggle{font-size:11px;color:#b91c1c;font-weight:500;display:block;margin-bottom:6px}
+.abnormal textarea{width:100%;padding:8px;background:#fff;border-radius:6px;font-size:12.5px;min-height:50px;border:1px solid #fecaca;margin-bottom:6px}
+.abnormal .fix-label{font-size:11px;color:#9a3412;font-weight:500;display:block;margin-bottom:4px;margin-top:6px}
+.abnormal .fix-input{width:100%;padding:8px;background:#fff;border-radius:6px;font-size:12.5px;min-height:40px;border:1px solid #fed7aa}
+.abnormal .photos{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.abnormal .photo-thumb{position:relative;width:50px;height:50px;border-radius:6px;overflow:hidden;background:#f3f4f6}
+.abnormal .photo-thumb img{width:100%;height:100%;object-fit:cover}
+.abnormal .photo-thumb .del{position:absolute;top:0;right:0;width:18px;height:18px;background:rgba(0,0,0,.5);color:#fff;font-size:10px;border-radius:0 0 0 6px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.abnormal .photo-add{width:50px;height:50px;border:1px dashed #d1d5db;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;color:#6b7280;font-size:10px;position:relative}
+.abnormal .photo-add input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.abnormal .photo-add .ic{font-size:18px;line-height:1}
+
+.summary textarea{width:100%;padding:10px;background:#f9fafb;border-radius:6px;font-size:13px;min-height:80px}
+
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;background:#fff;border-top:1px solid #e5e7eb;padding:10px 12px;display:flex;gap:8px;box-shadow:0 -2px 12px rgba(0,0,0,.08);z-index:60}
+.bottom-bar button{flex:1;padding:12px 0;border-radius:8px;font-size:14px;font-weight:600}
+.btn-save{background:#f3f4f6;color:#374151}
+.btn-submit{background:#ea580c;color:#fff}
+.btn-submit:disabled{opacity:.6}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="navbar">
+    <h1>月末全厂安全隐患排查记录单</h1>
+    <div class="sub"><span id="curDate"></span><span>·</span><span>全厂 · 月度</span></div>
+  </div>
+  <div class="progress-bar"><div class="fill" id="progFill"></div></div>
+  <div class="progress-tip">
+    <span>完成进度</span>
+    <span><b id="progDone">0</b>/<span id="progTotal">0</span> 项</span>
+  </div>
+
+  <!-- 头部信息 -->
+  <div class="card info-card">
+    <div class="card-title"><span><span class="dot"></span>基本信息</span></div>
+    <div class="field-row"><label>检查日期</label><input id="f_date" type="date" readonly style="background:#f3f4f6;color:#374151;pointer-events:none"></div>
+    <div class="field-row"><label>检查月份</label><input id="f_month" type="text" readonly style="background:#f3f4f6;color:#374151;pointer-events:none"></div>
+    <div class="field-row"><label>检查人</label>
+      <select id="f_inspector">
+        <option value="">-- 请选择 --</option>
+        <option value="张海飞">张海飞</option>
+        <option value="何荣生">何荣生</option>
+        <option value="季慧">季慧</option>
+        <option value="孙艳">孙艳</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 分组项 -->
+  <div id="groups"></div>
+
+  <!-- 总结 -->
+  <div class="card summary">
+    <div class="card-title"><span><span class="dot"></span>检查总结</span></div>
+    <div style="padding:12px 14px">
+      <div style="font-size:12px;color:#6b7280;margin-bottom:6px">本月排查发现的主要隐患 / 已闭环项 / 待跟进项</div>
+      <textarea id="f_summary" placeholder="按重要程度简要记录..."></textarea>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <button class="btn-save" onclick="saveDraft()">保存草稿</button>
+    <button class="btn-submit" onclick="submitForm()">提交</button>
+  </div>
+</div>
+
+<script>
+// 11 大类检查项（基于 xlsx 文字清理 + 业务规范，独立编写）
+const DATA = [
+  {cat:"热水槽", items:[
+    {content:"水压", std:"≥0.1MPA"},
+    {content:"水温", std:"60-65℃"},
+    {content:"水液位", std:"90-100"},
+    {content:"管道泵状态", std:"一台工作"}
+  ]},
+  {cat:"黄磷槽", items:[
+    {content:"水温", std:"≥60℃"},
+    {content:"水液位（磁翻板）", std:"≥1000"},
+    {content:"黄磷液位（磁翻板）", std:"≤1030（暂定）"},
+    {content:"黄磷液位（电子）", std:"≤1428（暂定）"}
+  ]},
+  {cat:"洗眼器", items:[
+    {content:"1#2# 洗眼器", std:"工作正常，水流畅通"}
+  ]},
+  {cat:"计量罐", items:[
+    {content:"夹套水温", std:"50-55℃"},
+    {content:"罐体异味/异响/螺丝发红/循环水管", std:"无异味、无异响、螺丝无发红、循环水管无异常"}
+  ]},
+  {cat:"中频炉系统", items:[
+    {content:"中频电柜", std:"无异味，无异响，螺丝无发红，循环水管无异常"},
+    {content:"炉体周边环境", std:"无潮湿、无积水、无易燃易爆物品；炉体下方排水沟无积水"},
+    {content:"胶木柱与螺栓", std:"胶木柱完整无开裂、螺栓螺母齐全牢固无松动"},
+    {content:"感应圈/磁轭/炉衬", std:"感应圈胶泥无剥落不露打结料；磁轭顶块顶杆齐全无松动；炉衬厚度≥新炉衬 35%"},
+    {content:"1#2# 冷却塔水压", std:"≥0.2MPA"},
+    {content:"1#2# 冷却塔水位", std:"液位计红色标线以上"},
+    {content:"1#2# 冷却塔报警", std:"温度/压力/流量监测报警正常"},
+    {content:"模具情况", std:"无缺损，正常使用"},
+    {content:"发电机情况", std:"运行正常"}
+  ]},
+  {cat:"环保设备", items:[
+    {content:"除尘器电气参数", std:"直流输出电流≥100mA，电压＞50kV"},
+    {content:"除尘器机械部件", std:"皮带/螺栓/电机/紧固件无损坏松动异响"},
+    {content:"风机电箱", std:"软启动显示旁路运行；电流 37-40A"},
+    {content:"跑冒滴漏", std:"无跑冒滴漏"},
+    {content:"空压机", std:"接头、阀门、排水阀正常运行"},
+    {content:"污染源在线监控", std:"电源、联网接口、显示器正常运行"},
+    {content:"水处理装置", std:"电动机接口密封性良好，滤布定期更换"}
+  ]},
+  {cat:"行车", items:[
+    {content:"运行情况", std:"运行正常"},
+    {content:"吊带/铁链/钢丝绳/夹头", std:"无明显磨损、破损、变形"}
+  ]},
+  {cat:"劳动防护用品", items:[
+    {content:"佩戴情况", std:"安全帽、口罩、劳保鞋、手套等正确佩戴"}
+  ]},
+  {cat:"卫生", items:[
+    {content:"生产车间及周围", std:"卫生秩序良好"},
+    {content:"卫生间", std:"清洁、无异味"},
+    {content:"包装车间", std:"卫生秩序良好"},
+    {content:"配件仓库", std:"卫生秩序良好"}
+  ]},
+  {cat:"安全", items:[
+    {content:"剪板机", std:"机身周围清洁，全系统无漏油，开关按钮正常"},
+    {content:"压铜机", std:"机身周围清洁，全系统无漏油，控制箱各电线按钮正常"},
+    {content:"挤压机", std:"机身周围清洁，全系统无漏油，控制箱各电线按钮正常"},
+    {content:"叉车", std:"整车及各零部件无异常"},
+    {content:"车间其他电气设备", std:"无异常"},
+    {content:"配电房常规检查", std:"无异味、异响，功率因数表数值正常"}
+  ]},
+  {cat:"环保", items:[
+    {content:"包装车间卫生秩序", std:"卫生秩序良好"},
+    {content:"危废仓库卫生及标签", std:"卫生良好，标签齐全"},
+    {content:"垃圾箱周围卫生", std:"周围卫生良好"},
+    {content:"生产/包装车间总体秩序", std:"卫生秩序良好"}
+  ]}
+];
+
+// 时间初始化
+function pad(n){return n<10?'0'+n:n}
+const now = new Date();
+document.getElementById('curDate').textContent = `${now.getMonth()+1}-${now.getDate()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+const todayStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+const monthStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}`;
+document.getElementById('f_date').value = todayStr;
+document.getElementById('f_month').value = monthStr;
+
+// 渲染分组（默认全部展开）
+const groupsEl = document.getElementById('groups');
+let totalItems = 0;
+DATA.forEach((g, gi) => {
+  totalItems += g.items.length;
+  const items = g.items.map((it, ii) => {
+    const itemId = `g${gi}_i${ii}`;
+    return `
+    <div class="item" data-id="${itemId}">
+      <div class="title"><span class="n">${ii+1}.</span><span>${it.content}</span></div>
+      <div class="std">📋 ${it.std || '—'}</div>
+      <div class="toggle">
+        <button class="ok" onclick="setCheck('${itemId}','ok',this)">√ 正常</button>
+        <button class="ng" onclick="setCheck('${itemId}','ng',this)">× 异常</button>
+      </div>
+      <div class="abnormal" id="${itemId}_ab">
+        <span class="a-toggle">⚠️ 异常情况描述</span>
+        <textarea placeholder="发现的问题描述"></textarea>
+        <span class="fix-label">🔧 整改措施</span>
+        <textarea class="fix-input" placeholder="整改方案 + 责任人 + 完成时限"></textarea>
+        <div class="photos" id="${itemId}_photos">
+          <label class="photo-add">
+            <span class="ic">📷</span>
+            <span>拍照</span>
+            <input type="file" accept="image/*" capture="environment" multiple onchange="addPhotos('${itemId}', this)">
+          </label>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  groupsEl.insertAdjacentHTML('beforeend', `
+    <div class="group open" data-gid="${gi}">
+      <div class="group-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="left"><span class="idx">${gi+1}</span><span>${g.cat}</span></div>
+        <div class="right">
+          <span class="badge" id="badge_${gi}">0/${g.items.length}</span>
+          <span class="chev">▾</span>
+        </div>
+      </div>
+      <div class="group-body">${items}</div>
+    </div>
+  `);
+});
+document.getElementById('progTotal').textContent = totalItems;
+
+const state = {};
+
+function setCheck(id, val, btn){
+  state[id] = { result: val };
+  const wrap = btn.parentElement;
+  wrap.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const ab = document.getElementById(id+'_ab');
+  if (val==='ng') ab.classList.add('open'); else ab.classList.remove('open');
+  updateProgress();
+}
+
+function updateProgress(){
+  let done = 0;
+  DATA.forEach((g, gi) => {
+    let gDone = 0;
+    g.items.forEach((it, ii) => {
+      const id = `g${gi}_i${ii}`;
+      if ((state[id]||{}).result) { gDone++; done++; }
+    });
+    const badge = document.getElementById('badge_'+gi);
+    badge.textContent = gDone + '/' + g.items.length;
+    badge.classList.toggle('ok', gDone === g.items.length);
+  });
+  document.getElementById('progDone').textContent = done;
+  document.getElementById('progFill').style.width = (done*100/totalItems).toFixed(1) + '%';
+}
+
+function addPhotos(itemId, input){
+  const box = document.getElementById(itemId+'_photos');
+  Array.from(input.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const t = document.createElement('div');
+      t.className = 'photo-thumb';
+      t.innerHTML = `<img src="${e.target.result}"><span class="del" onclick="this.parentElement.remove()">×</span>`;
+      box.insertBefore(t, box.querySelector('.photo-add'));
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value = '';
+  document.getElementById(itemId+'_ab').classList.add('open');
+}
+
+function saveDraft(){
+  alert('草稿已保存到本地 (demo)\n实际可对接飞书多维表 / 后端 API');
+}
+
+// === n8n webhook ===
+const WEBHOOK_URL = 'https://n8n.icecoke.xyz/webhook/monthly-check-v1';
+let submitting = false;
+let cooldownTimer = null;
+
+// 防重提交配置
+const COOLDOWN_SECONDS = 60;
+const DUP_GUARD_MINUTES = 30;
+const LS_KEY_LAST_HASH = 'h5monthly:lastSubmitHash';
+const LS_KEY_LAST_TS   = 'h5monthly:lastSubmitTs';
+
+function uuid4(){
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c=>{
+    const r = Math.random()*16|0;
+    const v = c==='x' ? r : (r&0x3|0x8);
+    return v.toString(16);
+  });
+}
+function djb2(s){
+  let h=5381;
+  for(let i=0;i<s.length;i++){ h=((h<<5)+h) ^ s.charCodeAt(i); }
+  return (h>>>0).toString(16);
+}
+function fingerprint(p){
+  const slim = {
+    month: p.month, inspector: p.inspector,
+    items: p.items, anomaly_summary: p.anomaly_summary, fix_summary: p.fix_summary, summary: p.summary,
+  };
+  return djb2(JSON.stringify(slim));
+}
+
+function collectPayload(){
+  const date = document.getElementById('f_date').value || todayStr;
+  const month = document.getElementById('f_month').value || monthStr;
+  const inspector = document.getElementById('f_inspector').value || '';
+  const summary = document.getElementById('f_summary').value || '';
+
+  const items = [];
+  const anomalyLines = [];
+  const fixLines = [];
+  DATA.forEach((g, gi) => {
+    g.items.forEach((it, ii) => {
+      const id = `g${gi}_i${ii}`;
+      const s = state[id] || {};
+      if (!s.result) return;
+      const status = s.result === 'ok' ? '正常' : '异常';
+      const abEl = document.querySelector(`#${id}_ab`);
+      const remark = abEl?.querySelector('textarea:not(.fix-input)')?.value || '';
+      const fix = abEl?.querySelector('textarea.fix-input')?.value || '';
+      const category_index = gi + 1;
+      const item_index = ii + 1;
+      const labeledCategory = `${category_index}.${g.cat}`;
+      const labeledName = `${item_index}.${it.content}`;
+      items.push({ category: labeledCategory, category_index, name: labeledName, item_index, status, remark, fix });
+      if (status === '异常') {
+        const tail = remark ? ` (${remark})` : '';
+        anomalyLines.push(`${labeledCategory}-${labeledName}${tail}`);
+        if (fix) fixLines.push(`${labeledCategory}-${labeledName}: ${fix}`);
+      }
+    });
+  });
+  const anomaly_summary = anomalyLines.join('\n');
+  const fix_summary = fixLines.join('\n');
+  const anomaly_count = anomalyLines.length;
+
+  return { date, month, inspector, items, anomaly_summary, fix_summary, anomaly_count, summary };
+}
+
+function startCooldown(btn, origText){
+  let left = COOLDOWN_SECONDS;
+  btn.disabled = true;
+  btn.textContent = `✅ 已提交 (${left}s)`;
+  if (cooldownTimer) clearInterval(cooldownTimer);
+  cooldownTimer = setInterval(() => {
+    left -= 1;
+    if (left <= 0) {
+      clearInterval(cooldownTimer); cooldownTimer = null;
+      btn.disabled = false;
+      btn.textContent = origText;
+      submitting = false;
+    } else {
+      btn.textContent = `✅ 已提交 (${left}s)`;
+    }
+  }, 1000);
+}
+
+async function submitForm(){
+  if (submitting) return;
+  const done = parseInt(document.getElementById('progDone').textContent);
+  if (done < totalItems) {
+    if (!confirm(`还有 ${totalItems-done} 项未完成，确认提交？`)) return;
+  }
+  const payload = collectPayload();
+  if (!payload.date || !payload.month || !payload.inspector) {
+    alert('请先填检查日期、检查月份、检查人');
+    return;
+  }
+
+  // 指纹去重：30 分钟内同 payload 拒绝
+  const fp = fingerprint(payload);
+  const lastHash = localStorage.getItem(LS_KEY_LAST_HASH);
+  const lastTs   = parseInt(localStorage.getItem(LS_KEY_LAST_TS) || '0', 10);
+  const ageMin   = (Date.now() - lastTs) / 60000;
+  if (lastHash === fp && ageMin < DUP_GUARD_MINUTES) {
+    const mins = Math.ceil(DUP_GUARD_MINUTES - ageMin);
+    alert(`这条记录刚交过（${Math.floor(ageMin)} 分钟前），\n如确实要再交一遍，请等 ${mins} 分钟后或修改内容。`);
+    return;
+  }
+
+  payload.client_submit_id = uuid4();
+  payload.client_fp = fp;
+
+  const btn = document.querySelector('.btn-submit');
+  submitting = true;
+  const origText = btn.textContent;
+  btn.textContent = '提交中…';
+  btn.disabled = true;
+
+  try {
+    const resp = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    try {
+      localStorage.setItem(LS_KEY_LAST_HASH, fp);
+      localStorage.setItem(LS_KEY_LAST_TS, String(Date.now()));
+    } catch(_) {}
+    alert('提交成功，数据已存入飞书多维表');
+    startCooldown(btn, origText);
+  } catch (e) {
+    btn.textContent = origText;
+    btn.disabled = false;
+    submitting = false;
+    if (confirm('提交失败：' + e.message + '\n点确定复制数据到剪贴板，方便发飞书给老王补录。')) {
+      try { await navigator.clipboard.writeText(JSON.stringify(payload, null, 2)); alert('已复制'); } catch(_){}
+    }
+  }
+}
+
+updateProgress();
+</script>
+</body>
+</html>
